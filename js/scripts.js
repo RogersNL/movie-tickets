@@ -9,6 +9,36 @@ function Movie (name, times) {
   this.listedTimes = times;
 
 }
+Ticket.prototype.priceCalc = function() {
+  var price = 10;
+  if (this.age === "child") {
+    price *= 0.6;
+  } else if (this.age === "senior"){
+    price *= 0.8;
+  } else {
+    price *= 1.2;
+  }
+  if (this.time < 1400) {
+    price *= 0.8;
+  }
+}
+
+function pushNumberOfTickets (array, index, numAdult, numChild, numSenior) {
+  for(i = 0; i < numAdult; i++){
+    array.push("adult");
+    index++;
+  }
+  for(i = 0; i < numChild; i++){
+    array.push("child");
+    index++;
+  }
+  for(i = 0; i < numSenior; i++){
+    array.push("senior");
+    index++;
+  }
+}
+
+
 function toMilitaryTime (string) {
   var newString = string.split(":").join("");
   if(newString.includes("am")){
@@ -49,6 +79,17 @@ $(document).ready(function(){
   });
   $("form#buy-tickets").submit(function(event){
     event.preventDefault();
+    var index = parseInt($("select#movie-name").val());
+    var inputtedTime = parseInt($("input:radio[name=time-of-movie]:checked").val());
+    var inputtedNumAdults = parseInt($("input#adult").val());
+    var inputtedNumChilds = parseInt($("input#child").val());
+    var inputtedNumSeniors = parseInt($("input#senior").val());
+
+    var arrayOfAges = [];
+    var agesIndex = 0;
+    pushNumberOfTickets(arrayOfAges, agesIndex, inputtedNumAdults, inputtedNumChilds, inputtedNumSeniors);
+    var newTicket = new Ticket (movieNames[index], inputtedTime, arrayOfAges[agesIndex]);
+
     
   });
 });
