@@ -11,3 +11,6 @@ label {
 .initial-hidden {
   display:none;
 }
+.summary-hidden {
+  display: none;
+}

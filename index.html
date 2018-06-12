@@ -24,7 +24,7 @@
             <option value="4">RBG</option>
           </select>
             </td>
-            <td><button type="submit" class="show-time-button btn btn-success">Show Times</button></td>
+            <td><button type="button" class="show-time-button btn btn-success">Show Times</button></td>
           </tr>
         </table>
         <label for="movie-name"><span class="movie-title"></span></label>
@@ -46,6 +46,12 @@
           <button type="submit" class="btn btn-primary">Buy Tickets!</button>
         </div>
       </form>
+      <div class="summary-hidden">
+        <h2>Thank you for your order! Here's your summary below.</h2>
+        <p>Movie: <span id="movie-summary"></span></p>
+        <p>Time: <span id="time-summary"></span></p>
+        <p>Your total: $<span id="total"></span></p>
+      </div>
     </div>
   </body>
 </html>
