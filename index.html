@@ -13,8 +13,9 @@
       <form id="buy-tickets">
         <label for="movie-name">Movie</label></br>
         <table>
-          <div class="col-md-3">
-            <select class="form-control" id="movie-name">
+          <tr>
+            <td>
+              <select class="form-control" id="movie-name">
             <option>Select Movie</option>
             <option value="0">Adrift</option>
             <option value="1">Avengers:Infinity War</option>
@@ -22,15 +23,28 @@
             <option value="3">First Reformed</option>
             <option value="4">RBG</option>
           </select>
+            </td>
+            <td><button type="submit" class="show-time-button btn btn-success">Show Times</button></td>
+          </tr>
+        </table>
+        <label for="movie-name"><span class="movie-title"></span></label>
+        <div id="show-times">
+        </div>
+        <div class="initial-hidden">
+          <div class="form-group">
+            <label for="adult">Adults ages 13-64</label>
+            <input id="adult" class="form-control" type="number">
           </div>
-          <div class="col-md-3">
-            <button type="submit" class="show-time-button btn btn-success">Show Times</button>
+          <div class="form-group">
+            <label for="child">Children ages 12 and under</label>
+            <input id="child" class="form-control" type="number">
           </div>
-          <label for="movie-name"><span class="movie-title"></span></label>
-          <div id="show-times">
+          <div class="form-group">
+            <label for="senior">Senior ages 65+</label>
+            <input id="senior" class="form-control" type="number">
           </div>
-
-        <!-- <button type="submit" class="btn btn-primary">Add</button> -->
+          <button type="submit" class="btn btn-primary">Buy Tickets!</button>
+        </div>
       </form>
     </div>
   </body>

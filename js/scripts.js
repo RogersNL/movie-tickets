@@ -9,7 +9,14 @@ function Movie (name, times) {
   this.listedTimes = times;
 
 }
-
+function toMilitaryTime (string) {
+  var newString = string.split(":").join("");
+  if(newString.includes("am")){
+    return parseInt(newString);
+  } else {
+    return parseInt(newString) + 1200;
+  }
+}
 var adriftTimes = ["11:10am", "1:45pm", "4:20pm", "7:10pm", "9:45pm"];
 var avengersTimes = ["12:15pm", "3:45pm", "6:00pm", "9:25pm"]
 var bookClubTimes = ["12:45pm", "3:35pm", "6:20pm", "9:00pm"]
@@ -26,20 +33,22 @@ $(document).ready(function(){
     if (!isNaN(index)) {
       $(".movie-title").text("Show Times for " + newMovie.name);
 
-
       newMovie.listedTimes.forEach(function(time){
       $("#show-times").append('<div class="radio">' +
                                   '<label>' +
-                                    '<input type="radio" name="flavor" value="' + time + '" checked>' +
+                                    '<input type="radio" name="time-of-movie" value="' + toMilitaryTime(time) + '" checked>' +
                                     time +
                                   '</label>' +
                                 '</div>');
       });
+      $(".initial-hidden").show();
     } else {
       $(".movie-title").empty();
+      $(".initial-hidden").hide();
     }
   });
   $("form#buy-tickets").submit(function(event){
     event.preventDefault();
+    
   });
 });
